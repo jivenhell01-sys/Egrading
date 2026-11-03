@@ -1,0 +1,10 @@
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Forcing use of main grading database for all users
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Current DB file: default (grading_db.db)
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - User ID: 1
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Executing query: SELECT security_enabled FROM `security_settings` ORDER BY id DESC LIMIT 1
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Found setting: false
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Forcing use of main grading database for all users
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Current DB file: default (grading_db.db)
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - User ID: 1
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Executing query: SELECT security_enabled FROM `security_settings` ORDER BY id DESC LIMIT 1
+[24-Mar-2026 08:33:32 America/New_York] Security Settings - Found setting: false

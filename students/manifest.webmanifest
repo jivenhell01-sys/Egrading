@@ -1,0 +1,17 @@
+{
+  "name": "HORIZON Student Portal — ESSUC",
+  "short_name": "HORIZON",
+  "description": "ESSUC Can-Avid student portal: live grades, assessments and study assistant.",
+  "id": "./login.php",
+  "start_url": "./login.php",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F7FE",
+  "theme_color": "#4318FF",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

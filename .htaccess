@@ -1,0 +1,110 @@
+# HORIZON Grading System - app-root Apache config
+#
+# Scope: this file covers the application root only. The students/ portal has
+# its own .htaccess; the two do not overlap (per-directory, not cumulative for
+# nested paths beyond the rules inherited from here).
+#
+# Deliberately NOT included: any mod_rewrite rule. The app does its own
+# authentication redirect in PHP (index.php sends unauthenticated users to
+# login.php). Adding a catch-all rewrite here previously caused
+# "Manifest: Line: 1, column: 1, Syntax error" on the deployed server: when a
+# file was missing, a `RewriteCond %{REQUEST_FILENAME} !-f` rule served the
+# HTML login page in place of the requested asset, and the browser tried to
+# parse <!DOCTYPE...> as JSON. With no rewrite rules here, a missing file
+# returns a real 404 and the browser can report the truth.
+
+# ---------------------------------------------------------------------------
+# MIME types
+# ---------------------------------------------------------------------------
+# The PWA manifest. Without an explicit mapping the type falls back to
+# whatever the host's mime.types happens to say - often octet-stream - and
+# combined with X-Content-Type-Options: nosniff the browser then refuses to
+# parse it. Declaring it here makes this host behave the same as the
+# production one regardless of the server's default table.
+<IfModule mod_mime.c>
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html
+</IfModule>
+
+# Default charset (same as students/.htaccess).
+AddDefaultCharset UTF-8
+
+# ---------------------------------------------------------------------------
+# No directory listings
+# ---------------------------------------------------------------------------
+# Without this, hitting /db/ or /uploads/ with no index file enumerates every
+# file in the folder.
+Options -Indexes
+
+# ---------------------------------------------------------------------------
+# Block direct web access to sensitive files
+# ---------------------------------------------------------------------------
+# Everything here is either a database, a backup, or a build artefact. Note
+# that downloads the app offers (Word/Excel/CSV/DB exports) are unaffected:
+# they are streamed by PHP via readfile() + Content-Disposition, which reads
+# the file from disk directly and never goes through Apache authorisation.
+
+# SQLite databases and their write-ahead log sidecars. This is the important
+# one: db/grading_db.db holds every student, mark and account record, and the
+# -wal/-shm sidecars are readable while the server is running.
+<FilesMatch "\.(db|db-wal|db-shm|sqlite|sqlite3)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Dumps, credentials, server config.
+<FilesMatch "\.(sql|dump|env|ini|conf|config|htaccess|htpasswd)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Logs, editor leftovers, dependency manifests and lockfiles.
+<FilesMatch "\.(log|bak|backup|old|orig|save|swp|swo|tmp|temp|lock|dist)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# PHP sources that should never be served even if a handler is bypassed.
+<FilesMatch "\.(phps|inc)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# ---------------------------------------------------------------------------
+# Hardening
+# ---------------------------------------------------------------------------
+# Stop Apache serving directory listings as files, and stop it following
+# symlinks out of the app tree.
+<IfModule mod_rewrite.c>
+    # NOTE: RewriteEngine On with no rules is intentional - it is inert, but
+    # having the block documented here means a future edit is a conscious act.
+    RewriteEngine Off
+</IfModule>
+
+# Referrer hygiene for outbound links.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>

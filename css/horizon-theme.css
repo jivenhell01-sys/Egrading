@@ -1,0 +1,1950 @@
+/**
+ * HORIZON UI DESIGN SYSTEM
+ * Adapted for Grading System
+ * Inspired by Horizon UI React (Tailwind CSS)
+ */
+
+
+
+/* ==========================================================================
+   CSS Variables & Color Tokens
+   ========================================================================== */
+:root {
+    /* Brand Colors */
+    --horizon-brand-50: #E9E3FF;
+    --horizon-brand-100: #C0B8FE;
+    --horizon-brand-200: #A195FD;
+    --horizon-brand-300: #8171FC;
+    --horizon-brand-400: #7551FF;
+    --horizon-brand-500: #4318FF;
+    --horizon-brand-600: #3311DB;
+    --horizon-brand-700: #2111A5;
+    --horizon-brand-linear: linear-gradient(135deg, #868CFF 0%, #4318FF 100%);
+    --horizon-brand-linear-hover: linear-gradient(135deg, #7551FF 0%, #3311DB 100%);
+
+    /* Navy Palette */
+    --horizon-navy-50: #d0dcfb;
+    --horizon-navy-100: #aac0fe;
+    --horizon-navy-200: #a3b9f8;
+    --horizon-navy-300: #728fea;
+    --horizon-navy-400: #3652ba;
+    --horizon-navy-500: #1b3bbb;
+    --horizon-navy-600: #24388a;
+    --horizon-navy-700: #1B254B;
+    --horizon-navy-800: #111c44;
+    --horizon-navy-900: #0b1437;
+
+    /* Light Palette */
+    --horizon-light-primary: #F4F7FE;
+    --horizon-white: #FFFFFF;
+
+    /* Neutral / Grays */
+    --horizon-gray-50: #f8f9fa;
+    --horizon-gray-100: #edf2f7;
+    --horizon-gray-200: #e9ecef;
+    --horizon-gray-300: #cbd5e0;
+    --horizon-gray-400: #a0aec0;
+    --horizon-gray-500: #adb5bd;
+    --horizon-gray-600: #a3aed0;
+    --horizon-gray-700: #707eae;
+    --horizon-gray-800: #252f40;
+    --horizon-gray-900: #1b2559;
+
+    /* Semantic Status Accents */
+    --horizon-green-50: rgba(5, 205, 153, 0.1);
+    --horizon-green-500: #05CD99;
+    --horizon-green-600: #01B574;
+
+    --horizon-red-50: rgba(238, 93, 80, 0.1);
+    --horizon-red-500: #EE5D50;
+    --horizon-red-600: #E31A1A;
+
+    --horizon-amber-50: rgba(255, 181, 71, 0.1);
+    --horizon-amber-500: #FFB547;
+    --horizon-amber-600: #FF8F00;
+
+    --horizon-cyan-500: #00B5D8;
+    --horizon-purple-500: #868CFF;
+
+    /* Dynamic Theme Defaults (LIGHT MODE) */
+    --horizon-bg-main: #F4F7FE;
+    --horizon-card-bg: #FFFFFF;
+    --horizon-card-border: #E9ECEF;
+    --horizon-card-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+    --horizon-card-shadow-hover: 0px 22px 45px rgba(112, 144, 176, 0.18);
+
+    --horizon-text-title: #2B3674;
+    --horizon-text-heading: #1B2559;
+    --horizon-text-body: #485885;
+    --horizon-text-muted: #A3AED0;
+    --horizon-text-secondary: #707EAE;
+
+    --horizon-sidebar-bg: #FFFFFF;
+    --horizon-sidebar-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.12);
+    --horizon-sidebar-border: #E9ECEF;
+
+    --horizon-navbar-bg: rgba(255, 255, 255, 0.85);
+    --horizon-navbar-pill-bg: #FFFFFF;
+    --horizon-navbar-pill-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.1);
+
+    --horizon-input-bg: #FFFFFF;
+    --horizon-input-border: #E9ECEF;
+    --horizon-input-text: #2B3674;
+
+    --horizon-table-header-color: #8F9BBA;
+    --horizon-table-border: #E9ECEF;
+    --horizon-table-hover: #F4F7FE;
+
+    --horizon-divider: #E9ECEF;
+
+    /* Metrics & Font */
+    --horizon-font-family: 'MS Reference Sans Serif', MS Reference Sans Serif;
+    --horizon-radius-card: 20px;
+    --horizon-radius-lg: 16px;
+    --horizon-radius-md: 12px;
+    --horizon-radius-sm: 8px;
+    --horizon-radius-pill: 9999px;
+
+}
+
+/* ==========================================================================
+   Global Reset & Base Typography
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--horizon-font-family);
+    background-color: var(--horizon-bg-main);
+    color: var(--horizon-text-body);
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-height: 100vh;
+    zoom: 100%;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: var(--horizon-font-family);
+    color: var(--horizon-text-title);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+h1,
+.h1 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+}
+
+h2,
+.h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+h3,
+.h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+}
+
+h4,
+.h4 {
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+h5,
+.h5 {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+h6,
+.h6 {
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--horizon-text-body);
+}
+
+a {
+    color: var(--horizon-brand-500);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--horizon-brand-600);
+}
+
+/* ==========================================================================
+   Scrollbar Styling
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--horizon-gray-300);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--horizon-brand-400);
+}
+
+/* ==========================================================================
+   Main Horizon Layout Structure
+   ========================================================================== */
+#app-layout {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--horizon-bg-main);
+}
+
+/* Sidebar */
+#horizon-sidebar {
+    width: 290px;
+    min-width: 290px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1040;
+    background-color: var(--horizon-sidebar-bg);
+    box-shadow: var(--horizon-sidebar-shadow);
+    border-right: 1px solid var(--horizon-sidebar-border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 16px 20px 16px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Sidebar Brand Header */
+.horizon-brand {
+    display: flex;
+    align-items: center;
+    padding: 0 16px 24px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--horizon-divider);
+}
+
+.horizon-brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.horizon-brand-title {
+    font-family: var(--horizon-font-family);
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--horizon-text-title);
+    line-height: 1.2;
+}
+
+.horizon-brand-title span {
+    color: var(--horizon-brand-500);
+    font-weight: bold;
+}
+
+.horizon-brand-subtitle {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--horizon-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Sidebar User Info Card */
+.horizon-user-profile-widget {
+    background: var(--horizon-input-bg);
+    border-radius: var(--horizon-radius-md);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--horizon-card-border);
+}
+
+.horizon-user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--horizon-brand-500);
+}
+
+.horizon-user-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.horizon-user-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--horizon-text-title);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.horizon-user-role {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--horizon-brand-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Navigation Items */
+.horizon-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.horizon-nav-group-title {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--horizon-gray-600);
+    padding: 12px 16px 6px 16px;
+    margin-top: 10px;
+}
+
+.horizon-nav-item {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.horizon-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: var(--horizon-radius-md);
+    color: var(--horizon-text-muted);
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+}
+
+.horizon-nav-link i,
+.horizon-nav-link svg {
+    font-size: 16px;
+    width: 24px;
+    margin-right: 12px;
+    color: var(--horizon-gray-600);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.horizon-nav-link:hover {
+    color: var(--horizon-brand-500);
+    background-color: var(--horizon-input-bg);
+}
+
+.horizon-nav-link:hover i {
+    color: var(--horizon-brand-500);
+    transform: scale(1.1);
+}
+
+/* Active Nav Item */
+.horizon-nav-item.active>.horizon-nav-link,
+.horizon-nav-link.active {
+    color: var(--horizon-brand-500);
+    font-weight: 700;
+    background-color: rgba(67, 24, 255, 0.06);
+}
+
+.horizon-nav-item.active>.horizon-nav-link i,
+.horizon-nav-link.active i {
+    color: var(--horizon-brand-500);
+}
+
+/* Active right indicator pill bar (Iconic Horizon design) */
+.horizon-nav-item.active::after,
+.horizon-nav-link.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    border-radius: 4px;
+    background: var(--horizon-brand-500);
+}
+
+/* Submenu */
+.horizon-submenu {
+    list-style: none;
+    padding-left: 36px;
+    margin: 4px 0 8px 0;
+    display: none;
+}
+
+.horizon-submenu.show {
+    display: block;
+}
+
+.horizon-submenu-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--horizon-text-muted);
+    border-radius: var(--horizon-radius-sm);
+    transition: all 0.2s ease;
+}
+
+.horizon-submenu-link:hover {
+    color: var(--horizon-brand-500);
+}
+
+.horizon-submenu-link.active {
+    color: var(--horizon-brand-500);
+    font-weight: 700;
+}
+
+/* Sidebar Footer / Card */
+.horizon-sidebar-card {
+    background: var(--horizon-brand-linear);
+    border-radius: var(--horizon-radius-card);
+    padding: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.horizon-sidebar-card h6 {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.horizon-sidebar-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+/* Main Content Area */
+#horizon-main {
+    flex: 1;
+    margin-left: 290px;
+    min-height: 100vh;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--horizon-bg-main);
+}
+
+/* Floating Glass Navbar */
+#horizon-navbar {
+    position: sticky;
+    top: 12px;
+    z-index: 1030;
+    margin: 12px 20px 24px 20px;
+    padding: 10px 16px;
+    border-radius: var(--horizon-radius-card);
+    background: var(--horizon-navbar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--horizon-card-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.horizon-breadcrumb-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizon-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--horizon-text-muted);
+    margin-bottom: 2px;
+}
+
+.horizon-breadcrumb a {
+    color: var(--horizon-text-muted);
+}
+
+.horizon-breadcrumb a:hover {
+    color: var(--horizon-brand-500);
+}
+
+.horizon-page-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Navbar Actions Pill Container (Iconic Horizon Floating Pill) */
+.horizon-nav-pill-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--horizon-navbar-pill-bg);
+    border-radius: var(--horizon-radius-pill);
+    padding: 6px 14px;
+    box-shadow: var(--horizon-navbar-pill-shadow);
+    border: 1px solid var(--horizon-card-border);
+}
+
+.horizon-search-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--horizon-input-bg);
+    border-radius: var(--horizon-radius-pill);
+    padding: 6px 14px;
+    gap: 8px;
+    width: 200px;
+    transition: width 0.3s ease;
+}
+
+.horizon-search-input-wrapper:focus-within {
+    width: 240px;
+}
+
+.horizon-search-input-wrapper i {
+    color: var(--horizon-gray-600);
+    font-size: 13px;
+}
+
+.horizon-search-input {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: var(--horizon-input-text);
+    outline: none;
+    width: 100%;
+}
+
+.horizon-search-input::placeholder {
+    color: var(--horizon-gray-600);
+}
+
+.horizon-nav-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--horizon-gray-600);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.horizon-nav-icon-btn:hover {
+    background-color: var(--horizon-input-bg);
+    color: var(--horizon-brand-500);
+}
+
+.horizon-theme-toggle {
+    color: var(--horizon-text-title);
+}
+
+.horizon-theme-toggle:hover {
+    color: var(--horizon-brand-500);
+}
+
+.horizon-avatar-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.horizon-avatar-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sidebar Collapse Toggle (inside sidebar brand) — works on desktop & mobile */
+.horizon-sidebar-toggle {
+    display: flex;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--horizon-input-bg);
+    border: 1px solid var(--horizon-card-border);
+    color: var(--horizon-text-muted);
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.horizon-sidebar-toggle:hover {
+    color: var(--horizon-brand-500);
+    border-color: var(--horizon-brand-500);
+}
+
+@media (min-width: 1200px) {
+
+    /* Navbar hamburger hidden on desktop — collapse lives in the sidebar */
+    .horizon-mobile-toggle {
+        display: none !important;
+    }
+}
+
+/* Collapsed Sidebar Hover Flyout Panel */
+.horizon-flyout {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1055;
+    min-width: 210px;
+    background: var(--horizon-sidebar-bg);
+    border: 1px solid var(--horizon-card-border);
+    border-radius: 12px;
+    box-shadow: var(--horizon-sidebar-shadow);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    pointer-events: none;
+}
+
+.horizon-flyout.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.horizon-flyout a,
+.horizon-flyout .horizon-flyout-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--horizon-text-title);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.horizon-flyout a:hover {
+    background: var(--horizon-input-bg);
+    color: var(--horizon-brand-500);
+}
+
+.horizon-flyout .horizon-flyout-title {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.horizon-flyout .horizon-flyout-title:hover {
+    background: var(--horizon-input-bg);
+    color: var(--horizon-brand-500);
+}
+
+/* Floating Expand Tab (shown when sidebar is collapsed on desktop) */
+.horizon-sidebar-expand {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 12px;
+    z-index: 1041;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--horizon-navbar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--horizon-card-border);
+    color: var(--horizon-text-title);
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: var(--horizon-card-shadow);
+    transition: all 0.2s ease;
+}
+
+.horizon-sidebar-expand:hover {
+    color: var(--horizon-brand-500);
+    border-color: var(--horizon-brand-500);
+}
+
+@media (min-width: 1200px) {
+    #app-layout.sidebar-collapsed .horizon-sidebar-expand {
+        display: flex;
+    }
+}
+
+/* Mobile Sidebar Toggle Button */
+.horizon-mobile-toggle {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--horizon-navbar-pill-bg);
+    border: 1px solid var(--horizon-card-border);
+    color: var(--horizon-text-title);
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: var(--horizon-card-shadow);
+}
+
+/* Page Container Body */
+.horizon-page-body {
+    padding: 0 20px 30px 20px;
+    flex: 1;
+}
+
+/* ==========================================================================
+   Horizon UI Card & Container Components
+   ========================================================================== */
+.horizon-card,
+.card {
+    background-color: var(--horizon-card-bg);
+    border-radius: var(--horizon-radius-card);
+    box-shadow: var(--horizon-card-shadow);
+    border: 1px solid var(--horizon-card-border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.horizon-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--horizon-card-shadow-hover);
+}
+
+.horizon-card-header,
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--horizon-divider);
+    padding: 0.5rem 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.horizon-card-header h5,
+.card-header h5,
+.horizon-card-header h4,
+.card-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+}
+
+.horizon-card-body,
+.card-body {
+    padding: 24px;
+}
+
+.horizon-card-footer,
+.card-footer {
+    background: transparent;
+    border-top: 1px solid var(--horizon-divider);
+    padding: 16px 24px;
+}
+
+/* ==========================================================================
+   Horizon UI Metric Stat Widgets (Icons in circles + Stat subtitles)
+   ========================================================================== */
+.horizon-widget {
+    background-color: var(--horizon-card-bg);
+    border-radius: var(--horizon-radius-card);
+    box-shadow: var(--horizon-card-shadow);
+    border: 1px solid var(--horizon-card-border);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+}
+
+.horizon-widget:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--horizon-card-shadow-hover);
+}
+
+.horizon-widget-icon-box {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--horizon-light-primary);
+    color: var(--horizon-brand-500);
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.horizon-widget-icon-box.green {
+    background-color: var(--horizon-green-50);
+    color: var(--horizon-green-500);
+}
+
+.horizon-widget-icon-box.red {
+    background-color: var(--horizon-red-50);
+    color: var(--horizon-red-500);
+}
+
+.horizon-widget-icon-box.amber {
+    background-color: var(--horizon-amber-50);
+    color: var(--horizon-amber-500);
+}
+
+.horizon-widget-icon-box.brand {
+    background-color: var(--horizon-brand-50);
+    color: var(--horizon-brand-500);
+}
+
+.horizon-widget-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.horizon-widget-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--horizon-gray-600);
+    margin: 0 0 4px 0;
+}
+
+.horizon-widget-value {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.horizon-widget-trend {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.horizon-widget-trend.positive {
+    color: var(--horizon-green-500);
+}
+
+.horizon-widget-trend.negative {
+    color: var(--horizon-red-500);
+}
+
+/* ==========================================================================
+   Horizon UI Form Controls & Inputs
+   ========================================================================== */
+.form-control,
+.form-select {
+    font-family: var(--horizon-font-family);
+    background-color: var(--horizon-input-bg) !important;
+    border: 1px solid var(--horizon-input-border) !important;
+    border-radius: var(--horizon-radius-md) !important;
+    color: var(--horizon-input-text) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 10px 16px !important;
+    min-height: 44px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--horizon-brand-500) !important;
+    box-shadow: 0 0 0 3px rgba(67, 24, 255, 0.15) !important;
+    outline: none !important;
+}
+
+.form-control::placeholder {
+    color: var(--horizon-gray-600) !important;
+    font-weight: 400;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--horizon-text-title);
+    margin-bottom: 6px;
+}
+
+.input-group-text {
+    background-color: var(--horizon-input-bg);
+    border: 1px solid var(--horizon-input-border);
+    color: var(--horizon-gray-600);
+    border-radius: var(--horizon-radius-md);
+    padding: 10px 14px;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid var(--horizon-input-border);
+    background-color: var(--horizon-input-bg);
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--horizon-brand-500);
+    border-color: var(--horizon-brand-500);
+}
+
+.form-check-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--horizon-text-title);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Horizon UI Buttons
+   ========================================================================== */
+.btn {
+    font-family: var(--horizon-font-family);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: var(--horizon-radius-md);
+    padding: 10px 20px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary,
+.btn-brand {
+    background-color: var(--horizon-brand-500) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(67, 24, 255, 0.25);
+}
+
+.btn-primary:hover,
+.btn-brand:hover {
+    background-color: var(--horizon-brand-600) !important;
+    box-shadow: 0 6px 20px rgba(67, 24, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active,
+.btn-brand:active {
+    transform: translateY(0);
+}
+
+.btn-gradient {
+    background: var(--horizon-brand-linear) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(67, 24, 255, 0.25);
+}
+
+.btn-gradient:hover {
+    background: var(--horizon-brand-linear-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(67, 24, 255, 0.35);
+}
+
+.btn-secondary {
+    background-color: var(--horizon-input-bg) !important;
+    color: var(--horizon-text-title) !important;
+    border: 1px solid var(--horizon-input-border) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--horizon-divider) !important;
+}
+
+.btn-success {
+    background-color: var(--horizon-green-500) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-danger {
+    background-color: var(--horizon-red-500) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-warning {
+    background-color: var(--horizon-amber-500) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: var(--horizon-radius-sm);
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 15px;
+    border-radius: var(--horizon-radius-lg);
+}
+
+.btn-pill {
+    border-radius: var(--horizon-radius-pill) !important;
+}
+
+/* ==========================================================================
+   Horizon UI Tables
+   ========================================================================== */
+.table-responsive {
+    border-radius: var(--horizon-radius-card);
+    overflow-x: auto;
+}
+
+.table,
+.horizon-table {
+    width: 100%;
+    margin-bottom: 0;
+    color: var(--horizon-text-body);
+    vertical-align: middle;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th,
+.horizon-table thead th {
+    background-color: transparent;
+    color: var(--horizon-table-header-color);
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px 12px;
+    border-top: none;
+    border-bottom: 1px solid var(--horizon-divider);
+    white-space: nowrap;
+}
+
+.table tbody td,
+.horizon-table tbody td {
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--horizon-text-title);
+    border-bottom: 1px solid var(--horizon-table-border);
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover td,
+.horizon-table tbody tr:hover td {
+    background-color: var(--horizon-table-hover);
+}
+
+/* Ensure status row colors override hover effects */
+.table tbody tr.status-dropped:hover td,
+.horizon-table tbody tr.status-dropped:hover td {
+    background-color: rgba(220, 53, 69, 0.15) !important;
+}
+
+.table tbody tr.status-nosub:hover td,
+.horizon-table tbody tr.status-nosub:hover td {
+    background-color: rgba(255, 165, 0, 0.15) !important;
+}
+
+.table tbody tr.status-noexam:hover td,
+.horizon-table tbody tr.status-noexam:hover td {
+    background-color: rgba(0, 255, 255, 0.15) !important;
+}
+
+.table tbody tr:last-child td,
+.horizon-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* DataTables Overrides for Horizon */
+.dataTables_wrapper {
+    padding: 0;
+    font-family: var(--horizon-font-family);
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    padding: 16px 20px;
+    color: var(--horizon-text-title);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    background: var(--horizon-input-bg);
+    border: 1px solid var(--horizon-input-border);
+    border-radius: var(--horizon-radius-md);
+    color: var(--horizon-input-text);
+    padding: 6px 12px;
+    margin-left: 8px;
+    outline: none;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    padding: 16px 20px;
+    color: var(--horizon-text-muted);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    font-weight: 600 !important;
+    color: var(--horizon-text-title) !important;
+    background: transparent !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--horizon-brand-500) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 10px rgba(67, 24, 255, 0.25);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--horizon-input-bg) !important;
+    color: var(--horizon-brand-500) !important;
+}
+
+/* ==========================================================================
+   Status-based Row Coloring
+   ========================================================================== */
+.status-dropped {
+    background-color: rgba(220, 53, 69, 0.15) !important;
+}
+
+.status-nosub {
+    background-color: rgba(255, 165, 0, 0.15) !important;
+}
+
+.status-noexam {
+    background-color: rgba(0, 255, 255, 0.15) !important;
+}
+
+/* ==========================================================================
+   Horizon Badges & Pill Tags
+   ========================================================================== */
+.badge,
+.horizon-badge {
+    font-family: var(--horizon-font-family);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--horizon-radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-brand,
+.badge-primary {
+    background-color: var(--horizon-brand-50);
+    color: var(--horizon-brand-500);
+}
+
+.badge-success {
+    background-color: var(--horizon-green-50);
+    color: var(--horizon-green-500);
+}
+
+.badge-danger {
+    background-color: var(--horizon-red-50);
+    color: var(--horizon-red-500);
+}
+
+.badge-warning {
+    background-color: var(--horizon-amber-50);
+    color: var(--horizon-amber-600);
+}
+
+.badge-secondary {
+    background-color: var(--horizon-gray-100);
+    color: var(--horizon-gray-700);
+}
+
+/* ==========================================================================
+   Horizon Modals & Popovers
+   ========================================================================== */
+.modal-backdrop.show {
+    opacity: 0.6;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content,
+.modern-modal .modal-content {
+    background-color: var(--horizon-card-bg);
+    border-radius: var(--horizon-radius-card);
+    border: 1px solid var(--horizon-card-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    padding: 0;
+}
+
+.modal-header,
+.modern-modal .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--horizon-divider);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-title,
+.modern-modal .modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+    margin: 0;
+}
+
+.modal-body,
+.modern-modal .modal-body {
+    padding: 24px;
+    color: var(--horizon-text-body);
+}
+
+.modal-footer,
+.modern-modal .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--horizon-divider);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Close button */
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a3aed0'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   Horizon Dropdown Menus
+   ========================================================================== */
+.dropdown-menu {
+    background-color: var(--horizon-card-bg);
+    border-radius: var(--horizon-radius-card);
+    box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.15);
+    border: 1px solid var(--horizon-card-border);
+    padding: 12px;
+    min-width: 220px;
+    animation: dropdownFadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-header {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--horizon-gray-600);
+    padding: 8px 12px 4px 12px;
+}
+
+.dropdown-item {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--horizon-text-title);
+    padding: 10px 14px;
+    border-radius: var(--horizon-radius-md);
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--horizon-input-bg);
+    color: var(--horizon-brand-500);
+}
+
+.dropdown-divider {
+    border-color: var(--horizon-divider);
+    margin: 6px 0;
+}
+
+/* ==========================================================================
+   Horizon Toast Notification Stack
+   ========================================================================== */
+.horizon-toast-stack {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 380px;
+    pointer-events: none;
+}
+
+.horizon-toast {
+    background-color: var(--horizon-card-bg);
+    border-radius: var(--horizon-radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--horizon-card-border);
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    pointer-events: auto;
+    animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
+}
+
+.horizon-toast.hiding {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.horizon-toast-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.horizon-toast-success .horizon-toast-icon {
+    background: var(--horizon-green-50);
+    color: var(--horizon-green-500);
+}
+
+.horizon-toast-danger .horizon-toast-icon {
+    background: var(--horizon-red-50);
+    color: var(--horizon-red-500);
+}
+
+.horizon-toast-warning .horizon-toast-icon {
+    background: var(--horizon-amber-50);
+    color: var(--horizon-amber-500);
+}
+
+.horizon-toast-info .horizon-toast-icon {
+    background: var(--horizon-brand-50);
+    color: var(--horizon-brand-500);
+}
+
+.horizon-toast-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.horizon-toast-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+    margin: 0 0 2px 0;
+}
+
+.horizon-toast-message {
+    font-size: 13px;
+    color: var(--horizon-text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.horizon-toast-close {
+    background: transparent;
+    border: none;
+    color: var(--horizon-gray-600);
+    cursor: pointer;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1;
+}
+
+/* Flash alerts in body */
+.horizon-flash-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: var(--horizon-radius-md);
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.horizon-flash-success {
+    background-color: var(--horizon-green-50);
+    border-color: rgba(5, 205, 153, 0.3);
+    color: var(--horizon-green-600);
+}
+
+.horizon-flash-danger {
+    background-color: var(--horizon-red-50);
+    border-color: rgba(238, 93, 80, 0.3);
+    color: var(--horizon-red-600);
+}
+
+.horizon-flash-warning {
+    background-color: var(--horizon-amber-50);
+    border-color: rgba(255, 181, 71, 0.3);
+    color: var(--horizon-amber-600);
+}
+
+.horizon-flash-info {
+    background-color: var(--horizon-brand-50);
+    border-color: rgba(67, 24, 255, 0.2);
+    color: var(--horizon-brand-500);
+}
+
+/* ==========================================================================
+   Horizon Nav Tabs & Pills
+   ========================================================================== */
+.nav-pills .nav-link {
+    font-family: var(--horizon-font-family);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--horizon-text-muted);
+    border-radius: var(--horizon-radius-pill);
+    padding: 8px 18px;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+.nav-pills .nav-link:hover {
+    color: var(--horizon-brand-500);
+    background-color: var(--horizon-input-bg);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--horizon-brand-500) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(67, 24, 255, 0.25);
+}
+
+/* ==========================================================================
+   Horizon Profile Layout Styles
+   ========================================================================== */
+.horizon-profile-banner {
+    position: relative;
+    height: 140px;
+    width: 100%;
+    border-radius: var(--horizon-radius-lg);
+    background: var(--horizon-brand-linear);
+    background-size: cover;
+    background-position: center;
+}
+
+.horizon-profile-avatar-wrapper {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid var(--horizon-card-bg);
+    background-color: var(--horizon-input-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.horizon-profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.horizon-profile-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--horizon-divider);
+}
+
+.horizon-stat-item {
+    text-align: center;
+}
+
+.horizon-stat-count {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--horizon-text-title);
+    margin: 0;
+}
+
+.horizon-stat-label {
+    font-size: 13px;
+    color: var(--horizon-text-muted);
+    margin: 0;
+}
+
+/* Table styling for Horizon UI */
+.table,
+.horizon-table {
+    color: var(--horizon-text-body);
+    background-color: var(--horizon-card-bg);
+}
+
+.table thead,
+.horizon-table thead {
+    color: var(--horizon-table-header-color);
+}
+
+.table tbody tr:hover,
+.horizon-table tbody tr:hover {
+    background-color: var(--horizon-table-hover);
+}
+
+/* ==========================================================================
+   Global Dropdown — Smooth Animation & Positioning
+   ========================================================================== */
+
+/* Keyframe: fade + slide down from 6px above */
+@keyframes horizonDropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dropdown-menu {
+    /* Horizon styling */
+    background-color: var(--horizon-card-bg);
+    border: 1px solid var(--horizon-divider);
+    border-radius: var(--horizon-radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 6px;
+    min-width: 160px;
+    z-index: 1055;
+
+    /* Start hidden, animate in when .show is added */
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+    pointer-events: none;
+}
+
+.dropdown-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+    pointer-events: auto;
+}
+
+/* Items */
+.dropdown-item {
+    border-radius: var(--horizon-radius-sm);
+    font-size: 13px;
+    padding: 7px 12px;
+    color: var(--horizon-text-body);
+    transition: background-color 0.15s ease, color 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--horizon-brand-50);
+    color: var(--horizon-brand-500);
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: var(--horizon-red-50);
+    color: var(--horizon-red-600);
+}
+
+.dropdown-divider {
+    border-color: var(--horizon-divider);
+    margin: 4px 0;
+}
+
+/* Dark mode overrides */
+body.dark,
+body.dark-mode,
+body[data-theme="dark"],
+body[data-bs-theme="dark"],
+html[data-theme="dark"] body {
+    color-scheme: dark;
+    --horizon-bg-main: #101624;
+    --horizon-card-bg: #182235;
+    --horizon-card-border: #2b3850;
+    --horizon-card-shadow: 0px 18px 40px rgba(0, 0, 0, 0.24);
+    --horizon-card-shadow-hover: 0px 22px 45px rgba(0, 0, 0, 0.34);
+    --horizon-text-title: #f1f5ff;
+    --horizon-text-heading: #e5ebfa;
+    --horizon-text-body: #c2cee6;
+    --horizon-text-muted: #8e9dbc;
+    --horizon-text-secondary: #aab7d1;
+    --horizon-sidebar-bg: #141d2e;
+    --horizon-sidebar-shadow: 14px 17px 40px 4px rgba(0, 0, 0, 0.22);
+    --horizon-sidebar-border: #2b3850;
+    --horizon-navbar-bg: rgba(24, 34, 53, 0.88);
+    --horizon-navbar-pill-bg: #202d43;
+    --horizon-navbar-pill-shadow: 14px 17px 40px 4px rgba(0, 0, 0, 0.2);
+    --horizon-input-bg: #202d43;
+    --horizon-input-border: #35445e;
+    --horizon-input-text: #f1f5ff;
+    --horizon-table-header-color: #9eacce;
+    --horizon-table-border: #2b3850;
+    --horizon-table-hover: #24334b;
+    --horizon-divider: #2b3850;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table {
+    --bs-table-bg: var(--horizon-card-bg);
+    --bs-table-color: var(--horizon-text-title);
+    --bs-table-border-color: var(--horizon-table-border);
+    background-color: var(--horizon-card-bg);
+    color: var(--horizon-text-body);
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table tbody td,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table tbody td {
+    background-color: var(--horizon-card-bg);
+    color: var(--horizon-text-title);
+    border-color: var(--horizon-table-border);
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table tbody tr:hover td,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table tbody tr:hover td {
+    background-color: var(--horizon-table-hover);
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table tbody tr.status-dropped td,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table tbody tr.status-dropped td {
+    background-color: rgba(238, 93, 80, 0.2) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table tbody tr.status-nosub td,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table tbody tr.status-nosub td {
+    background-color: rgba(255, 181, 71, 0.2) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .table tbody tr.status-noexam td,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table tbody tr.status-noexam td {
+    background-color: rgba(0, 181, 216, 0.2) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) code.text-primary {
+    color: #8ab4ff !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .horizon-table .text-dark {
+    color: var(--horizon-text-title) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .marks-info-card {
+    background-color: var(--horizon-card-bg) !important;
+    color: var(--horizon-text-body);
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) #marks-table thead tr.marks-table-header {
+    background: var(--horizon-card-bg) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) #marks-table thead tr.marks-table-header .text-dark {
+    color: var(--horizon-text-title) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .bulk-entry-header {
+    background-color: var(--horizon-card-bg) !important;
+    color: var(--horizon-text-title);
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .bulk-entry-header h6 {
+    color: var(--horizon-text-title) !important;
+}
+
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .marks-hps-suffix {
+    background-color: var(--horizon-input-bg) !important;
+    border-color: var(--horizon-input-border) !important;
+    color: var(--horizon-text-body) !important;
+}
+
+/* Dark mode: native <select> option lists (e.g. the class Schedule days
+   dropdown). Options inherit the select's light text color while the popup
+   itself defaults to a light surface, rendering them invisible — so paint
+   the options explicitly. */
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) select option,
+:is(body.dark, body.dark-mode, body[data-theme="dark"], body[data-bs-theme="dark"], html[data-theme="dark"] body) .form-select option {
+    background-color: var(--horizon-input-bg);
+    color: var(--horizon-input-text);
+}
+
+/* ==========================================================================
+   Horizon Auth (Sign In) Split Layout
+   ========================================================================== */
+.horizon-auth-container {
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    background-color: var(--horizon-card-bg);
+}
+
+.horizon-auth-form-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.horizon-auth-hero-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--horizon-brand-linear);
+    border-bottom-left-radius: 160px;
+    position: relative;
+    padding: 60px;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.horizon-auth-hero-side::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1199.98px) {
+    #horizon-sidebar {
+        transform: translateX(-100%);
+    }
+
+    #horizon-sidebar.show {
+        transform: translateX(0);
+    }
+
+    #horizon-main {
+        margin-left: 0;
+    }
+}
+
+/* ==========================================================================
+   Desktop Collapsed Sidebar (icon-only rail)
+   ========================================================================== */
+@media (min-width: 1200px) {
+    #app-layout.sidebar-collapsed #horizon-sidebar {
+        width: 78px;
+        min-width: 78px;
+        padding: 30px 10px 20px 10px;
+    }
+
+    #app-layout.sidebar-collapsed #horizon-main {
+        margin-left: 78px;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-brand > div,
+    #app-layout.sidebar-collapsed .horizon-user-profile-widget .horizon-user-details,
+    #app-layout.sidebar-collapsed .horizon-nav-item span,
+    #app-layout.sidebar-collapsed .horizon-nav-group-title,
+    #app-layout.sidebar-collapsed .horizon-submenu {
+        display: none;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-brand {
+        justify-content: center;
+        padding: 0 0 24px 0;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-brand-logo {
+        margin-right: 0;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-sidebar-toggle {
+        display: none;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-user-profile-widget {
+        justify-content: center;
+        padding: 10px 4px;
+        gap: 0;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-nav-link {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-nav-link i {
+        width: auto;
+        margin: 0;
+    }
+
+    #app-layout.sidebar-collapsed .horizon-nav-link i.ms-auto {
+        display: none;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    #app-layout.sidebar-collapsed #horizon-sidebar {
+        width: 290px;
+        min-width: 290px;
+        padding: 30px 16px 20px 16px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #horizon-navbar {
+        margin: 10px 10px 16px 10px;
+        padding: 8px 12px;
+    }
+
+    .horizon-page-body {
+        padding: 0 10px 20px 10px;
+    }
+
+    .horizon-search-input-wrapper {
+        display: none;
+    }
+
+    .horizon-auth-hero-side {
+        display: none;
+    }
+
+    .horizon-auth-form-side {
+        padding: 30px 20px;
+    }
+}

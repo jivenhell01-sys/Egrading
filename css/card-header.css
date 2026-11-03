@@ -1,0 +1,7 @@
+.card-header {
+        background: linear-gradient(135deg, #495057 0%, #8d00a9 100%);
+        color: white;
+        border-radius: 8px 8px 0 0 !important;
+        padding: 0.65rem 1.25rem;
+        margin-bottom: 1rem;
+    }

@@ -1,0 +1,233 @@
+/* Custom Styles for Grading System */
+
+/* Freeze Panes Container for Sticky Table Columns */
+.freeze-panes-container {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.freeze-panes-container table {
+    position: relative;
+}
+
+.freeze-panes-container .sticky-col {
+    position: sticky !important;
+    left: 0;
+    z-index: 100;
+    background-color: white !important;
+}
+
+.freeze-panes-container thead .sticky-col {
+    z-index: 101;
+    background-color: gold !important;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Print Styles */
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+    
+    body {
+        padding: 20px;
+        font-size: 12px;
+    }
+    
+    .card {
+        border: 1px solid #dee2e6;
+        page-break-inside: avoid;
+    }
+    
+    .table {
+        font-size: 11px;
+    }
+    
+    .badge {
+        border: 1px solid #dee2e6;
+    }
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Button Styles */
+.btn {
+    font-weight: 500;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+}
+
+/* Attendance Status */
+.attendance-present {
+    background-color: rgba(25, 135, 84, 0.05) !important;
+    transition: background-color 0.3s ease;
+}
+
+.attendance-absent {
+    background-color: rgba(220, 53, 69, 0.05) !important;
+    transition: background-color 0.3s ease;
+}
+
+.attendance-present:hover {
+    background-color: rgba(25, 135, 84, 0.1) !important;
+}
+
+.attendance-absent:hover {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 1.25rem;
+}
+
+/* Table Styling */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    border-top: none;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+
+/* Badge Styling */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+}
+
+/* Button Styling */
+.btn-outline-primary {
+    border-width: 1px;
+}
+
+/* Subject Header */
+.subject-header {
+    background-color: #f8f9fa;
+    border-left: 3px solid #0d6efd;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/* Print Button */
+#print-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .card-header h5 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .table-responsive {
+        border: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+    
+    .table {
+        border-collapse: collapse;
+    }
+    
+    .table th, .table td {
+        border: 1px solid #dee2e6;
+    }
+}
